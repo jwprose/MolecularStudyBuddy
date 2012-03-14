@@ -1,0 +1,24 @@
+
+    <LinearLayout 
+    	android:layout_height="fill_parent" 
+    	android:id="@+id/linearLayout1" 
+    	android:orientation="vertical" 
+    	android:weightSum="1" 
+    	xmlns:android="http://schemas.android.com/apk/res/android" 
+    	android:layout_width="match_parent"
+    >
+        <Button 
+        	android:text="@string/plus" 
+        	android:layout_height="wrap_content" 
+        	android:layout_width="wrap_content" 
+        	android:id="@+id/addButton" 
+        	android:onClick="addAtom" 
+        	android:layout_gravity="center_horizontal|bottom">
+        </Button>
+        <sws.msb.BuilderView 
+        	android:layout_width="wrap_content" 
+        	android:id="@+id/bView" 
+        	android:layout_height="fill_parent">
+        </sws.msb.BuilderView>
+    
+    </LinearLayout>
