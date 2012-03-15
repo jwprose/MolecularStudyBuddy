@@ -89,7 +89,7 @@ public class AtomView extends View
         paint.setColor(Color.WHITE);
         paint.setStyle(Paint.Style.FILL);
         // TODO Set style!
-        //canvas.drawText(atom.getSymbol(), location.x, location.y, paint);
+        canvas.drawText(atom.getSymbol(), location.x, location.y, paint);
         canvas.drawCircle(0, 0, 100, paint);
     }
 

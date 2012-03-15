@@ -1,5 +1,9 @@
 package sws.msb;
 
+import android.graphics.Paint.Style;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.content.Context;
 import android.view.View;
@@ -51,5 +55,15 @@ public class BuilderView extends View
         AtomView newView = new AtomView(getContext());
         newView.setAtom(newAtom);
         atoms.add(newView);
+    }
+    
+    public void onDraw(Canvas canvas) {
+        Paint paint = new Paint();
+        paint.setColor(Color.DKGRAY);
+        paint.setStyle(Style.FILL);
+        canvas.drawPaint(paint);
+        for (AtomView atom : atoms) {
+            atom.draw(canvas);
+        }
     }
 }

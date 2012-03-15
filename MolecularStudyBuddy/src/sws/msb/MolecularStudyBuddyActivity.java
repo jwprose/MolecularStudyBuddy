@@ -1,5 +1,6 @@
 package sws.msb;
 
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.app.Activity;
@@ -28,7 +29,37 @@ public class MolecularStudyBuddyActivity extends Activity
 
         bView = (BuilderView)(findViewById(R.id.bView));
  }
-
+    public boolean onTouchEvent(MotionEvent event) {
+        boolean handled = false;
+        boolean touched = false;
+//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//            handled = true;
+//        }
+//        else 
+        if (event.getAction() == MotionEvent.ACTION_MOVE) {
+            AtomView clicking = null;
+            float x = event.getX();
+            float y = event.getY();
+            for (AtomView atom : bView.getAtoms()) {
+//                if (atom.getLocation().x <= x + 100 &&
+//                    atom.getLocation().x >= x - 100 &&
+//                    atom.getLocation().y <= y + 100 &&
+//                    atom.getLocation().y >= y + 100) {
+//                    clicking = atom;
+//                }
+                clicking = atom;
+            }
+            if (clicking != null){
+                clicking.setLocation(event.getX(), event.getY());
+            }
+            handled = true;
+        }
+//        else if (event.getAction() == MotionEvent.ACTION_UP) {
+//            handled = true;
+//        }
+        return handled;
+    }
+    
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
@@ -38,6 +69,7 @@ public class MolecularStudyBuddyActivity extends Activity
         // TODO Prompt user to choose element from a list.
 
         bView.addAtom(new Atom(Element.H));
+        bView.postInvalidate();
     }
 
 
