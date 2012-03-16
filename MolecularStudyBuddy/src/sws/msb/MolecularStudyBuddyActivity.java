@@ -2,7 +2,6 @@ package sws.msb;
 
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -31,32 +30,61 @@ public class MolecularStudyBuddyActivity extends Activity
  }
     public boolean onTouchEvent(MotionEvent event) {
         boolean handled = false;
-        boolean touched = false;
-//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//            handled = true;
-//        }
-//        else 
+//        boolean touched = false;
         if (event.getAction() == MotionEvent.ACTION_MOVE) {
-            AtomView clicking = null;
+            Atom current = null;
+            for (Atom atom : bView.getAtoms()) {
+                current = atom;
+            }
             float x = event.getX();
             float y = event.getY();
-            for (AtomView atom : bView.getAtoms()) {
-//                if (atom.getLocation().x <= x + 100 &&
-//                    atom.getLocation().x >= x - 100 &&
-//                    atom.getLocation().y <= y + 100 &&
-//                    atom.getLocation().y >= y + 100) {
-//                    clicking = atom;
-//                }
-                clicking = atom;
-            }
-            if (clicking != null){
-                clicking.setLocation(event.getX(), event.getY());
+            if (current != null) {
+                current.setLocation(x, y - 50);
             }
             handled = true;
         }
-//        else if (event.getAction() == MotionEvent.ACTION_UP) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            bView.addAtom(new Atom(Element.H, event.getX(), event.getY() - 50));
+        }
+////        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+////            handled = true;
+////        }
+////        else 
+//        Atom clicking = null;
+//        ArrayList <Atom> atoms = bView.getAtoms();
+//        for (int i = 0; i < atoms.size(); i++) {
+////            if (atom.getLocation().x <= x + 100 &&
+////                atom.getLocation().x >= x - 100 &&
+////                atom.getLocation().y <= y + 100 &&
+////                atom.getLocation().y >= y + 100) {
+////                clicking = atom;
+////            }
+//            clicking = atoms.get(i);
+//        }
+//        if (event.getAction() == MotionEvent.ACTION_MOVE) {
+////            AtomView clicking = null;
+//            float x = event.getX();
+//            float y = event.getY();
+////            for (AtomView atom : bView.getAtoms()) {
+////            ArrayList <AtomView> atoms = bView.getAtoms();
+////            for (int i = 0; i < atoms.size(); i++) {
+////                if (atom.getLocation().x <= x + 100 &&
+////                    atom.getLocation().x >= x - 100 &&
+////                    atom.getLocation().y <= y + 100 &&
+////                    atom.getLocation().y >= y + 100) {
+////                    clicking = atom;
+////                }
+////                clicking = atoms.get(i);
+////            }
+//            if (clicking != null){
+//                clicking.setLocation(event.getX(), event.getY());
+//            }
 //            handled = true;
 //        }
+////        else if (event.getAction() == MotionEvent.ACTION_UP) {
+////            handled = true;
+////        }
+        bView.postInvalidate();
         return handled;
     }
     

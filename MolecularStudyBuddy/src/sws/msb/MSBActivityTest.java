@@ -29,12 +29,12 @@ public class MSBActivityTest extends AndroidTestCase<MolecularStudyBuddyActivity
     public void setUp()
     {
         bView = getView(BuilderView.class, R.id.bView);
-        plus = getView(Button.class, R.id.addButton);
+//        plus = getView(Button.class, R.id.addButton);
     }
 
     public void testAddAtom()
     {
-        click(plus);
+//        click(plus);
         assertTrue(bView.getAtoms().size() > 0);
     }
 }

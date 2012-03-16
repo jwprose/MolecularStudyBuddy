@@ -1,5 +1,6 @@
 package sws.msb;
 
+import android.graphics.PointF;
 import android.graphics.Paint.Style;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 public class BuilderView extends View
 {
 
-    private ArrayList<AtomView> atoms;
+    private ArrayList<Atom> atoms;
 
     // ----------------------------------------------------------
     /**
@@ -32,7 +33,7 @@ public class BuilderView extends View
     public BuilderView(Context context, AttributeSet attributeSet)
     {
         super(context, attributeSet);
-        atoms = new ArrayList<AtomView>();
+        atoms = new ArrayList<Atom>();
     }
 
 
@@ -40,7 +41,7 @@ public class BuilderView extends View
     /**
      * @return the list of atoms
      */
-    public ArrayList<AtomView> getAtoms()
+    public ArrayList<Atom> getAtoms()
     {
         return atoms;
     }
@@ -52,18 +53,22 @@ public class BuilderView extends View
      */
     public void addAtom(Atom newAtom)
     {
-        AtomView newView = new AtomView(getContext());
-        newView.setAtom(newAtom);
-        atoms.add(newView);
+//        AtomView newView = new AtomView(getContext());
+//        newView.setAtom(newAtom);
+        atoms.add(newAtom); //newView);
     }
     
     public void onDraw(Canvas canvas) {
-        Paint paint = new Paint();
-        paint.setColor(Color.DKGRAY);
-        paint.setStyle(Style.FILL);
-        canvas.drawPaint(paint);
-        for (AtomView atom : atoms) {
-            atom.draw(canvas);
+        Paint dkGray = new Paint();
+        dkGray.setColor(Color.DKGRAY);
+        dkGray.setStyle(Style.FILL);
+        canvas.drawPaint(dkGray);
+        Paint white = new Paint();
+        white.setColor(Color.WHITE);
+        white.setStyle(Style.FILL);
+        for (Atom atom : atoms) {
+            PointF point = atom.getLocation();
+            canvas.drawCircle(point.x, point.y, 10, white);
         }
     }
 }
