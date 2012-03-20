@@ -96,7 +96,11 @@ public class AtomView extends View
         black.setColor(Color.BLACK);
         black.setStyle(Style.FILL);
         canvas.drawCircle(location.x, location.y, 25, white);
-        canvas.drawText(atom.getSymbol(), location.x - 4, location.y + 4, black);
+        String symbol = atom.getSymbol();
+        if (symbol.length() == 1)
+            canvas.drawText(atom.getSymbol(), location.x - 4, location.y + 4, black);
+        else
+            canvas.drawText(atom.getSymbol(), location.x - 6, location.y + 4, black);
     }
 
 }

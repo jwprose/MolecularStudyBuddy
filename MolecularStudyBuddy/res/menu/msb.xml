@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Clear" android:id="@+id/clear" />
+    <item android:title="Add Atom" android:id="@+id/add" >
+        <menu>
+	        <item android:title="Hydrogen" 
+	            android:id="@+id/H" 
+	            android:titleCondensed="H"/>
+	        <item android:title="Helium" 
+	            android:id="@+id/He" 
+	            android:titleCondensed="He"/>
+	        <item android:title="Lithium" 
+	            android:id="@+id/Li" 
+	            android:titleCondensed="Li"/>
+	        <item android:title="Beryllium" 
+	            android:id="@+id/Be" 
+	            android:titleCondensed="Be"/>
+	        <item android:title="Boron" 
+	            android:id="@+id/B" 
+	            android:titleCondensed="B"/>
+	        <item android:title="Carbon" 
+	            android:id="@+id/C" 
+	            android:titleCondensed="C"/>
+	        <item android:title="Nitrogen" 
+	            android:id="@+id/N" 
+	            android:titleCondensed="N"/>
+	        <item android:title="Oxygen" 
+	            android:id="@+id/O" 
+	            android:titleCondensed="O"/>
+	        <item android:title="Fluorine" 
+	            android:id="@+id/F" 
+	            android:titleCondensed="F"/>
+	        <item android:title="Neon" 
+	            android:id="@+id/Ne" 
+	            android:titleCondensed="Ne"/>
+	        <item android:title="Sodium" 
+	            android:id="@+id/Na" 
+	            android:titleCondensed="Na"/>
+	        <item android:title="Magnesium" 
+	            android:id="@+id/Mg" 
+	            android:titleCondensed="Mg"/>
+	        <item android:title="Aluminium" 
+	            android:id="@+id/Al" 
+	            android:titleCondensed="Al"/>
+	        <item android:title="Silicon" 
+	            android:id="@+id/Si" 
+	            android:titleCondensed="Si"/>
+	        <item android:title="Phosphorus" 
+	            android:id="@+id/P" 
+	            android:titleCondensed="P"/>
+	        <item android:title="Sulfur" 
+	            android:id="@+id/S" 
+	            android:titleCondensed="S"/>
+	        <item android:title="Chlorine" 
+	            android:id="@+id/Cl" 
+	            android:titleCondensed="Cl"/>
+	        <item android:title="Argon" 
+	            android:id="@+id/Ar" 
+	            android:titleCondensed="Ar"/>
+        </menu>
+    </item>
+<!--     <item android:title="Reveal Solution" -->
+<!--           android:id="@+id/revealSolution" /> -->
+<!--     <item android:title="Change Size" -->
+<!--           android:id="@+id/changeSize" > -->
+<!--         <menu> -->
+<!--             <item android:title="4x4" android:id="@+id/four"></item> -->
+<!--             <item android:id="@+id/nine" android:title="9x9"></item> -->
+<!--             <item android:id="@+id/twentyFive" android:title="25x25"></item> -->
+<!--             <item android:id="@+id/more" android:title="More..."></item> -->
+<!--         </menu> -->
+<!--     </item> -->
+</menu>

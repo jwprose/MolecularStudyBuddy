@@ -58,6 +58,10 @@ public class BuilderView extends View
         atoms.add(newView);
     }
     
+    public void clearAtoms() {
+        atoms.clear();
+    }
+    
     public void addAtom(PointF location, Atom newAtom) {
         AtomView newView = new AtomView(getContext());
         newView.setAtom(newAtom);

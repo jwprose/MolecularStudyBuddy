@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, MolecularStudyBuddyActivity!</string>
     <string name="app_name">MolecularStudyBuddy</string>
     <string name="plus">+</string>
+    <string-array name="elements">
+        <item>Hydrogen</item>
+        <item>Helium</item>
+        <item>Lithium</item>
+        <item>Beryllium</item>
+        <item>Boron</item>
+        <item>Carbon</item>
+        <item>Nitrogen</item>
+        <item>Oxygen</item>
+        <item>Flourine</item>
+        <item>Neon</item>
+        <item>Sodium</item>
+        <item>Magnesium</item>
+        <item>Aluminium</item>
+        <item>Silicon</item>
+        <item>Phosphorus</item>
+        <item>Sulfur</item>
+        <item>Chlorine</item>
+        <item>Argon</item>
+    </string-array>
 </resources>
