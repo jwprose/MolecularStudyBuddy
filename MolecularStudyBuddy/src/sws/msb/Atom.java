@@ -14,7 +14,7 @@ import android.graphics.PointF;
 public class Atom
 {
     private Element element;
-    private PointF location;
+//    private PointF location;
 
     // ----------------------------------------------------------
     /**
@@ -24,7 +24,7 @@ public class Atom
     public Atom (Element element)
     {
         setElement(element);
-        this.location = new PointF(0, 0);
+//        this.location = new PointF(0, 0);
     }
 
     // ----------------------------------------------------------
@@ -35,28 +35,28 @@ public class Atom
     public Atom (String symbol)
     {
         setElement(symbol);
-        this.location = new PointF(0, 0);
+//        this.location = new PointF(0, 0);
     }
     
-    public Atom (Element element, PointF point) {
-        setElement(element);
-        this.location = point;
-    }
+//    public Atom (Element element, PointF point) {
+//        setElement(element);
+//        this.location = point;
+//    }
     
-    public Atom (String symbol, PointF point) {
-        setElement(symbol);
-        this.location = point;
-    }
+//    public Atom (String symbol, PointF point) {
+//        setElement(symbol);
+//        this.location = point;
+//    }
     
-    public Atom (Element element, float x, float y) {
-        setElement(element);
-        this.location = new PointF(x, y);
-    }
+//    public Atom (Element element, float x, float y) {
+//        setElement(element);
+//        this.location = new PointF(x, y);
+//    }
     
-    public Atom (String symbol, float x, float y) {
-        setElement(symbol);
-        this.location = new PointF(x, y);
-    }
+//    public Atom (String symbol, float x, float y) {
+//        setElement(symbol);
+//        this.location = new PointF(x, y);
+//    }
 
     // ----------------------------------------------------------
     /**
@@ -96,16 +96,16 @@ public class Atom
     {
         setElement(Element.valueOf(symbol));
     }
-    
-    public PointF getLocation() {
-        return this.location;
-    }
-    
-    public void setLocation(PointF point) {
-        this.location = point;
-    }
-    
-    public void setLocation(float x, float y) {
-        this.location = new PointF(x, y);
-    }
+//    
+//    public PointF getLocation() {
+//        return this.location;
+//    }
+//    
+//    public void setLocation(PointF point) {
+//        this.location = point;
+//    }
+//    
+//    public void setLocation(float x, float y) {
+//        this.location = new PointF(x, y);
+//    }
 }

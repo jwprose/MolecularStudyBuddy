@@ -1,5 +1,6 @@
 package sws.msb;
 
+import android.graphics.Paint.Style;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Canvas;
@@ -21,6 +22,8 @@ public class AtomView extends View
 
     private Atom atom;
     private PointF location;
+    private Paint white;
+    private Paint black;
 
     // ----------------------------------------------------------
     /**
@@ -31,6 +34,8 @@ public class AtomView extends View
     {
         super(context);
         location = new PointF();
+        white = new Paint();
+        black = new Paint();
     }
 
 
@@ -85,12 +90,13 @@ public class AtomView extends View
 
     public void onDraw(Canvas canvas)
     {
-        Paint paint = new Paint();
-        paint.setColor(Color.WHITE);
-        paint.setStyle(Paint.Style.FILL);
         // TODO Set style!
-        canvas.drawText(atom.getSymbol(), location.x, location.y, paint);
-        canvas.drawCircle(0, 0, 100, paint);
+        white.setColor(Color.WHITE);
+        white.setStyle(Style.FILL);
+        black.setColor(Color.BLACK);
+        black.setStyle(Style.FILL);
+        canvas.drawCircle(location.x, location.y, 25, white);
+        canvas.drawText(atom.getSymbol(), location.x - 4, location.y + 4, black);
     }
 
 }

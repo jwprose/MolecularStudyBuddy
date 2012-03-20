@@ -1,5 +1,7 @@
 package sws.msb;
 
+import android.graphics.PointF;
+import android.view.View.*;
 import android.view.MotionEvent;
 import android.view.View;
 import android.app.Activity;
@@ -15,9 +17,13 @@ import android.os.Bundle;
  *  @version 2012.03.13
  */
 public class MolecularStudyBuddyActivity extends Activity
+    implements OnTouchListener, OnLongClickListener
 {
 
     BuilderView bView;
+    private AtomView currentAtom;
+    private boolean moving;
+    private PointF location;
 
     /** Called when the activity is first created. */
     @Override
@@ -27,66 +33,10 @@ public class MolecularStudyBuddyActivity extends Activity
 //        03-13 04:27:01.205: ERROR/AndroidRuntime(403): java.lang.IllegalStateException: Could not find a method addAtom(View) in the activity class sws.msb.MolecularStudyBuddyActivity for onClick handler on view class android.widget.Button with id 'addButton'
 
         bView = (BuilderView)(findViewById(R.id.bView));
+        bView.setOnLongClickListener(this);
+        bView.setOnTouchListener(this);
  }
-    public boolean onTouchEvent(MotionEvent event) {
-        boolean handled = false;
-//        boolean touched = false;
-        if (event.getAction() == MotionEvent.ACTION_MOVE) {
-            Atom current = null;
-            for (Atom atom : bView.getAtoms()) {
-                current = atom;
-            }
-            float x = event.getX();
-            float y = event.getY();
-            if (current != null) {
-                current.setLocation(x, y - 50);
-            }
-            handled = true;
-        }
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            bView.addAtom(new Atom(Element.H, event.getX(), event.getY() - 50));
-        }
-////        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-////            handled = true;
-////        }
-////        else 
-//        Atom clicking = null;
-//        ArrayList <Atom> atoms = bView.getAtoms();
-//        for (int i = 0; i < atoms.size(); i++) {
-////            if (atom.getLocation().x <= x + 100 &&
-////                atom.getLocation().x >= x - 100 &&
-////                atom.getLocation().y <= y + 100 &&
-////                atom.getLocation().y >= y + 100) {
-////                clicking = atom;
-////            }
-//            clicking = atoms.get(i);
-//        }
-//        if (event.getAction() == MotionEvent.ACTION_MOVE) {
-////            AtomView clicking = null;
-//            float x = event.getX();
-//            float y = event.getY();
-////            for (AtomView atom : bView.getAtoms()) {
-////            ArrayList <AtomView> atoms = bView.getAtoms();
-////            for (int i = 0; i < atoms.size(); i++) {
-////                if (atom.getLocation().x <= x + 100 &&
-////                    atom.getLocation().x >= x - 100 &&
-////                    atom.getLocation().y <= y + 100 &&
-////                    atom.getLocation().y >= y + 100) {
-////                    clicking = atom;
-////                }
-////                clicking = atoms.get(i);
-////            }
-//            if (clicking != null){
-//                clicking.setLocation(event.getX(), event.getY());
-//            }
-//            handled = true;
-//        }
-////        else if (event.getAction() == MotionEvent.ACTION_UP) {
-////            handled = true;
-////        }
-        bView.postInvalidate();
-        return handled;
-    }
+    
     
     // ----------------------------------------------------------
     /**
@@ -98,6 +48,56 @@ public class MolecularStudyBuddyActivity extends Activity
 
         bView.addAtom(new Atom(Element.H));
         bView.postInvalidate();
+    }
+    
+    public void addAtom(PointF location) {
+        bView.addAtom(location, new Atom(Element.H));
+        bView.postInvalidate();
+    }
+
+    public boolean onLongClick(View v)
+    {
+        if (this.currentAtom == null && this.location != null && !moving) {
+            this.addAtom(location);
+            currentAtom = bView.getAtoms().get(bView.getAtoms().size() - 1);
+        }
+        // Change to false if you want more handled in any other on-click
+        // listeners.
+        return true;
+    }
+
+    public boolean onTouch(View v, MotionEvent event)
+    {
+        boolean handled = false;
+        this.location = new PointF(event.getX(), event.getY());
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            for (AtomView atom : bView.getAtoms()) {
+                PointF atomLoc = atom.getLocation();
+                if (location.x >= atomLoc.x - 25 &&
+                    location.x <= atomLoc.x + 25 &&
+                    location.y >= atomLoc.y - 25 &&
+                    location.y <= atomLoc.y + 25) {
+                    currentAtom = atom;
+                }
+            }
+            handled = false;
+        }
+        if (event.getAction() == MotionEvent.ACTION_MOVE) {
+            if (currentAtom != null && location != null){
+                currentAtom.setLocation(location);
+            }
+            moving = true;
+            handled = true;
+        }
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            this.currentAtom = null;
+            this.location = null;
+            moving = false;
+            handled = true;
+        }
+        // TODO Auto-generated method stub
+        bView.postInvalidate();
+        return handled;
     }
 
 
